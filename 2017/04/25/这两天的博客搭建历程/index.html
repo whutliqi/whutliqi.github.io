@@ -17,20 +17,20 @@
 <!--<![endif]-->
 
 <head>
-  <title>这两天的博客搭建历程 | Hexo</title>
+  <title>这两天的博客搭建历程 | 四次元小屋</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
+    <meta name="generator" content="四次元小屋">
     <meta name="author" content="Richie">
-    <meta name="description" content="四次元小屋" />
+    <meta name="description" content="" />
     <meta name="keywords" content="" />
 
     <!-- Favicon, (keep icon in root folder) -->
     <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="四次元小屋" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
     
     <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
@@ -91,9 +91,13 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/1life/" class="animsition-link">life<small>(1)</small></a></li>
+				    <li><a href="/1DSP/" class="animsition-link">-DSP<small>(0)</small></a></li>
+				    
+				    <li><a href="/1DSP/" class="animsition-link">DSP<small>(1)</small></a></li>
 				    
 				    <li><a href="/1programming/" class="animsition-link">programming<small>(1)</small></a></li>
+				    
+				    <li><a href="/1生活/" class="animsition-link">生活<small>(1)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -140,7 +144,7 @@
                     <!-- Info-bar -->
                     <nav>
                         <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li><a href="/" class="animsition-link">四次元小屋</a></li>
                             <li class="nolink"><span>Always </span>Creative.</li>
                             
                             <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
@@ -192,7 +196,39 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		
+      		<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a><strong>搭建环境</strong></h1><p>## </p>
+<ul>
+<li>首先声明所有的搭建过程都是在win10下进行的，对于mac系统下的搭建过程不是很了解，所以并没有叙述</li>
+<li><em>node.js</em><ol>
+<li>作用：用来生成静态页面</li>
+<li>安装：直接到其官网下载安装即可</li>
+</ol>
+</li>
+<li><em>git</em></li>
+</ul>
+<ol>
+<li>作用：因为后续要借用github的服务器来托管自己的网站，所以要通过git将本地的东西上传到github上</li>
+<li>安装：还是去其官网下载安装即可<br><strong>当完成上面两步后，便可以检测一下了</strong><br>打开命令运行窗，确认一下是否安装好了。<br><img src="2017-05-07_120127.png" alt="命令运行窗"></li>
+</ol>
+<ul>
+<li><em>一个github账号</em><ol>
+<li>作用： 用来做博客的远程创库，域名，服务器等等。而且以后想要修改博客的主题，都可以去看github上大佬们的作品。</li>
+<li>用法：进入github，点击右上角加号New Repository。然后在repository name中填写<a href="http://name.github.io/" target="_blank" rel="external">http://name.github.io/</a>  其中name必须是github账号的名字。<br><strong>此时远程的配置基本做完了，再回到本地的配置</strong></li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>首先安装hexo。打开你想要安装到的文件夹，按shift＋鼠标右键 打开命令行窗口，然后输入<code>npm install -g hexo</code>回车等待，然后再输入<code>npm install hexo -s</code>回车等待。这样hexo就安装好了。要想检测一下的话，继续输入<code>hexo -v</code>回车查看。如图即可 <img src="2017-05-08_172605.png" alt=""></li>
+<li>找到你想要创建本地文件的文件夹，在空白处shift＋鼠标右键打开命令行或者直接鼠标右键打开git bash here输入<code>hexo init</code>回车等待，回生成许多文件，然后<code>hexo s</code>保存一下，这样本地的配置也基本做完了。<br><strong>本地与远程之间的联系</strong></li>
+<li>基本可以通过<code>hexo d</code>这个命令来完成，也就是将本地的文件部署到你通过github创建的网站上。</li>
+<li>在部署的时候，必须输入github的账号密码才能完成。为了避免每次都输入账号密码的麻烦，可以通过ssh授权，建立本地与远程的联系，以后就不会提示输入账号密码了。 首先打开gitbash，输入<code>ssh-keygen -t rsa</code>按三下回车。接着就会在C:\Users\Administrator.ssh目录下生成到id_rsa和id-rsa.pub两个文件，id_rsa是密钥，id_rsa.pub是公钥，接下来需要将id_rsa.pub的内容添加到GitHub上，这样本地的id_rsa密钥才能跟 GitHub上的 id_rsa.pub公钥进行配对，才能够授权成功。添加的方法，直接去github点右上角setting选项即可找到添加的地方。<br><strong>接下来是配置hexo</strong><h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a><strong>hexo</strong></h1>##<ol>
+<li>在自动生成的文件中，名为_config的YML文件可以配置博客的大部分属性。为了博客能正常发布，需要修改该文件的一些内容。首先说明的是，YML文件中冒号后必须有一个空格，在文件的最下面，改成如图所示。<img src="2017-05-09_170857.png" alt="">其中type： git表示通过git上传。最后一行是要自己加的，repo后面是自己的项目仓库地址，在github里可以找到。</li>
+<li>安装上传插件。hexo是有很多插件的，在官网都有说明，现在先讲上传插件。打开命令运行窗口，输入<code>npm install hexo-deployer-git --save</code>即可。这样输入hexo d的命令才是有效的。</li>
+<li>一些基本指令。 hexo s 生成本地博客，打开浏览器，输入 <a href="http://localhost:4000/即可打开。hexo" target="_blank" rel="external">http://localhost:4000/即可打开。hexo</a> g 在修改了文章或新建文章之后，都要输一遍，用来生成静态页面到public目录。一般都是修改完博客后，先hexo g再hexo s到本地看效果，然后hexo d上传到网络。<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h1><h2 id="完成上述步骤，就可以通过浏览器进入自己的博客了，但还有很多hexo和markdown语法的问题都没有提及，可以去查看官方文档，我以后可能还会再总结一下，另写一篇。"><a href="#完成上述步骤，就可以通过浏览器进入自己的博客了，但还有很多hexo和markdown语法的问题都没有提及，可以去查看官方文档，我以后可能还会再总结一下，另写一篇。" class="headerlink" title="完成上述步骤，就可以通过浏览器进入自己的博客了，但还有很多hexo和markdown语法的问题都没有提及，可以去查看官方文档，我以后可能还会再总结一下，另写一篇。"></a>完成上述步骤，就可以通过浏览器进入自己的博客了，但还有很多hexo和markdown语法的问题都没有提及，可以去查看官方文档，我以后可能还会再总结一下，另写一篇。</h2></li>
+</ol>
+</li>
+</ol>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
@@ -202,6 +238,10 @@
         ← Hello World
     </a>
     
+    
+    <a class="pull-right" href="/2017/05/05/st89c51/">
+        st89c51 →
+    </a>
     
 </nav>
 
